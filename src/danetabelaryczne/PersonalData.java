@@ -6,12 +6,14 @@
 
 package danetabelaryczne;
 
+import java.io.Serializable;
+
 /**
  *
  * @author pieni
  */
 
-public class PersonalData {
+public class PersonalData implements Serializable{
     
     private String FirstName;
     private String LastName;

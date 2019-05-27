@@ -12,6 +12,10 @@ package danetabelaryczne;
  */
 
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class DataAccess implements IDataAccess{
@@ -39,6 +43,32 @@ public class DataAccess implements IDataAccess{
     @Override
     public int Size() {
         return students.size();
+    }
+
+    @Override
+    public void Serializuj(String plik) {
+        try
+        {
+            FileOutputStream f1 = new FileOutputStream(plik);
+            ObjectOutputStream o1 = new ObjectOutputStream(f1);
+            o1.writeObject(students);
+            o1.close();
+            f1.close();
+        }
+        catch (Exception ex){}
+    }
+
+    @Override
+    public void Deserializuj(String plik) {
+        try
+        {
+            FileInputStream f1 = new FileInputStream(plik);
+            ObjectInputStream o1 = new ObjectInputStream(f1);
+            students = (ArrayList<PersonalData>) o1.readObject();
+            o1.close();
+            f1.close();
+        }
+        catch (Exception ex){}
     }
 }
 

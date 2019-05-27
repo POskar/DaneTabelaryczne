@@ -19,5 +19,9 @@ public interface IDataAccess {
     void Remove(int index);
     
     int Size();
+    
+    public void Serializuj(String plik);
+    
+    public void Deserializuj(String plik);
 }
 
